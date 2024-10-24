@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viktorina</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #e0eafc, #cfdef3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+        .quiz-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+        }
+        h1 {
+            text-align: center;
+            color: #4a90e2;
+        }
+        p {
+            font-weight: bold;
+        }
+        label {
+            display: block;
+            margin: 10px 0;
+            padding: 8px;
+            background: #f7f7f7;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+        label:hover {
+            background: #e0e0e0;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4a90e2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #357ab8;
+        }
+        #result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Viktorina</h1>
+        <form id="quizForm">
+            <div>
+                <p>1. Dunyo xaritasida eng katta qit'a qaysi?</p>
+                <label><input type="radio" name="q1" value="to'g'ri"> Osiyo</label>
+                <label><input type="radio" name="q1" value="notog'ri"> Afrika</label>
+                <label><input type="radio" name="q1" value="notog'ri"> Yevropa</label>
+            </div>
+            <div>
+                <p>2. O'zbekistanning poytaxti qaysi?</p>
+                <label><input type="radio" name="q2" value="to'g'ri"> Toshkent</label>
+                <label><input type="radio" name="q2" value="notog'ri"> Samarqand</label>
+                <label><input type="radio" name="q2" value="notog'ri"> Buxoro</label>
+            </div>
+            <div>
+                <p>3. Suvning kimyoviy formulasi qanday?</p>
+                <label><input type="radio" name="q3" value="to'g'ri"> H2O</label>
+                <label><input type="radio" name="q3" value="notog'ri"> CO2</label>
+                <label><input type="radio" name="q3" value="notog'ri"> O2</label>
+            </div>
+            <div>
+                <p>3. Suvning kimyoviy formulasi qanday?</p>
+                <label><input type="radio" name="q3" value="to'g'ri"> H2O</label>
+                <label><input type="radio" name="q3" value="notog'ri"> CO2</label>
+                <label><input type="radio" name="q3" value="notog'ri"> O2</label>
+            </div>
+            <div>
+                <p>3. Suvning kimyoviy formulasi qanday?</p>
+                <label><input type="radio" name="q3" value="to'g'ri"> H2O</label>
+                <label><input type="radio" name="q3" value="notog'ri"> CO2</label>
+                <label><input type="radio" name="q3" value="notog'ri"> O2</label>
+            </div>
+            <button type="button" onclick="showResults()">Natijani ko'rsatish</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function showResults() {
+            const totalQuestions = 3;
+            let score = 0;
+
+            // To'g'ri javoblarni tekshirish
+            const answers = {
+                q1: 'to\'g\'ri',
+                q2: 'to\'g\'ri',
+                q3: 'to\'g\'ri'
+            };
+
+            for (let question in answers) {
+                const userAnswer = document.querySelector(`input[name="${question}"]:checked`);
+                if (userAnswer && userAnswer.value === answers[question]) {
+                    score++;
+                }
+            }
+
+            // Natijani ko'rsatish
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = `Siz ${score} ta to'g'ri javob berdingiz! (${score} / ${totalQuestions})`;
+        }
+    </script>
+</body>
+</html>
